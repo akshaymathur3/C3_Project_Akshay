@@ -20,9 +20,9 @@ public class Restaurant {
     public boolean isRestaurantOpen() {
         LocalTime currentTime = getCurrentTime();
         if(currentTime.compareTo(openingTime) > 0 && currentTime.compareTo(closingTime) < 0)
-        return true;
+            return true;
         else
-        return false;
+            return false;
     }
 
     public LocalTime getCurrentTime(){ return  LocalTime.now(); }
@@ -43,7 +43,7 @@ public class Restaurant {
         Item newItem = new Item(name,price);
         menu.add(newItem);
     }
-    
+
     public void removeFromMenu(String itemName) throws itemNotFoundException {
 
         Item itemToBeRemoved = findItemByName(itemName);
@@ -64,4 +64,15 @@ public class Restaurant {
     public String getName() {
         return name;
     }
+
+    public int calculateOrderTotal(List<String> itemNames){
+        int amount = 0;
+        for(Item item: menu) {
+            if(itemNames.contains(item.getName()))
+                amount += item.getPrice();
+        }
+        return amount;
+    }
+
+
 }
