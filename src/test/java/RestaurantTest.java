@@ -64,4 +64,12 @@ class RestaurantTest {
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+    @Test
+    public void calculate_order_value_should_return_total_amount_from_given_list_of_item_names() {
+        List<String> itemNames= new ArrayList<String>();
+        itemNames.add("Sweet corn soup");
+        itemNames.add("Vegetable lasagne");
+
+        assertEquals(388, restaurant.calculateOrderTotal(itemNames));
+    }
 }
